@@ -1,18 +1,20 @@
 import React from "react";
 import { Provider } from "react-redux";
 
-import logo from "./logo.svg";
 import "./App.css";
 import { TodoForm } from "./modules/todos/components/TodoForm";
+import { store } from "./modules/redux/store";
 
 import "bulma/css/bulma.css";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <h1>TODO App</h1>
-      <TodoForm />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <h1>TODO App</h1>
+        <TodoForm />
+      </div>
+    </Provider>
   );
 };
 

@@ -9,7 +9,7 @@ const TodoList: React.FC = () => {
   return (
     <ul>
       {todos.map((todo, index) => (
-        <TodoItem key={index} text={todo.text} />
+        <TodoItem key={index} id={todo.id} text={todo.text} />
       ))}
     </ul>
   );

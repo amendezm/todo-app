@@ -7,13 +7,11 @@ import { todosSelector } from "../redux/selectors";
 const TodoList: React.FC = () => {
   const todos = useSelector(todosSelector);
   return (
-    <ul>
-      <div className="columns is-multiline">
-        {todos.map((todo, index) => (
-          <TodoItem key={index} {...todo} />
-        ))}
-      </div>
-    </ul>
+    <div className="columns is-multiline">
+      {todos.map((todo, index) => (
+        <TodoItem key={index} {...todo} />
+      ))}
+    </div>
   );
 };
 

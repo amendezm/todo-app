@@ -2,10 +2,14 @@ import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import className from "classnames";
 
-import { removeTodo, remarkTodo } from "../redux/actions";
+import { removeTodo, remarkTodo, toggleTodo } from "../redux/actions";
 
-const TodoItem: React.FC<IProps> = ({ id, text, remarked }) => {
+const TodoItem: React.FC<IProps> = ({ id, text, remarked, toggled }) => {
   const dispatch = useDispatch();
+
+  const handleToggleClick = useCallback(() => {
+    dispatch(toggleTodo({ id }));
+  }, [id, dispatch]);
 
   const handleRemarkClick = useCallback(() => {
     dispatch(remarkTodo({ id }));
@@ -18,13 +22,19 @@ const TodoItem: React.FC<IProps> = ({ id, text, remarked }) => {
   return (
     <>
       <div className="column is-9">
-        <span
+        <p
           className={className({
-            "has-text-bold is-uppercase is-italic": remarked
+            "has-text-weight-bold is-uppercase is-italic": remarked,
+            "is-italic has-text-grey-light": toggled
           })}
+          style={{
+            textDecoration: toggled ? "line-through" : "",
+            cursor: "pointer"
+          }}
+          onClick={handleToggleClick}
         >
           {text}
-        </span>
+        </p>
       </div>
       <div className="column is-1">
         <a

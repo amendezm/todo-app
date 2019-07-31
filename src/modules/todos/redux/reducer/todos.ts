@@ -27,12 +27,12 @@ const todo = (state: ITodoState = initialTodoState, action: ActionType) => {
     case toggleTodo.type:
       return {
         ...state,
-        togle: !state.toggle
+        toggled: !state.toggled
       };
     case remarkTodo.type:
       return {
         ...state,
-        togle: !state.remarked
+        remarked: !state.remarked
       };
     default:
       return state;
@@ -42,7 +42,7 @@ const todo = (state: ITodoState = initialTodoState, action: ActionType) => {
 const initialTodoState = {
   id: 0,
   text: "",
-  toggle: false,
+  toggled: false,
   remarked: false
 };
 

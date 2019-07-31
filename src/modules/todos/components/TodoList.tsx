@@ -8,9 +8,11 @@ const TodoList: React.FC = () => {
   const todos = useSelector(todosSelector);
   return (
     <ul>
-      {todos.map((todo, index) => (
-        <TodoItem key={index} id={todo.id} text={todo.text} />
-      ))}
+      <div className="columns is-multiline">
+        {todos.map((todo, index) => (
+          <TodoItem key={index} {...todo} />
+        ))}
+      </div>
     </ul>
   );
 };

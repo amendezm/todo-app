@@ -12,9 +12,17 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <div className="App">
-        <h1>TODO App</h1>
-        <TodoForm />
-        <TodoList />
+        <h1 className="title has-text-centered">TODO App</h1>
+        <hr />
+        <div className="container">
+          <div className="columns">
+            <div className="column is-10 is-offset-1">
+              <TodoForm />
+              <hr />
+              <TodoList />
+            </div>
+          </div>
+        </div>
       </div>
     </Provider>
   );

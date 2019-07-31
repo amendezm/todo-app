@@ -1,28 +1,59 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { removeTodo } from "../redux/actions";
+import className from "classnames";
 
-const TodoItem: React.FC<IProps> = ({ id, text }) => {
+import { removeTodo, remarkTodo } from "../redux/actions";
+
+const TodoItem: React.FC<IProps> = ({ id, text, remarked }) => {
   const dispatch = useDispatch();
 
-  const handleClick = useCallback(() => {
+  const handleRemarkClick = useCallback(() => {
+    dispatch(remarkTodo({ id }));
+  }, [id, dispatch]);
+
+  const handleRemoveClick = useCallback(() => {
     dispatch(removeTodo({ id }));
   }, [id, dispatch]);
 
   return (
-    <li>
-      <div className="level">
-        <span>{text}</span>
-        <button className="button is-danger" onClick={handleClick}>
-          Delete
-        </button>
+    <>
+      <div className="column is-9">
+        <span
+          className={className({
+            "has-text-bold is-uppercase is-italic": remarked
+          })}
+        >
+          {text}
+        </span>
       </div>
-    </li>
+      <div className="column is-1">
+        <a
+          role="button"
+          className={className(
+            remarked ? "has-text-warning" : "has-text-black"
+          )}
+          onClick={handleRemarkClick}
+        >
+          <i className={className(remarked ? "fas" : "far", "fa-star")} />
+        </a>
+      </div>
+      <div className="column is-1">
+        <a
+          role="button"
+          className="has-text-danger"
+          onClick={handleRemoveClick}
+        >
+          <i className="fas fa-trash-alt" />
+        </a>
+      </div>
+    </>
   );
 };
 
 type IProps = {
   id: number;
   text: string;
+  toggled: boolean;
+  remarked: boolean;
 };
 export { TodoItem };

@@ -5,6 +5,7 @@ import "./App.css";
 import { TodoForm } from "./modules/todos/components/TodoForm";
 import { TodoList } from "./modules/todos/components/TodoList";
 import { store } from "./modules/redux/store";
+import { TodoFilter } from "./modules/todos/components/TodoFilter";
 
 import "bulma/css/bulma.css";
 
@@ -20,6 +21,8 @@ const App: React.FC = () => {
               <TodoForm />
               <hr />
               <TodoList />
+              <hr />
+              <TodoFilter />
             </div>
           </div>
         </div>

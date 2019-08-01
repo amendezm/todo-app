@@ -2,7 +2,7 @@ import { setVisibilityFilter } from "./../actions";
 import { ActionTypeOf } from "../../../redux/type-helpers";
 
 const filter = (
-  state: string = "",
+  state: string = "All",
   action: ActionTypeOf<typeof setVisibilityFilter>
 ) => {
   switch (action.type) {

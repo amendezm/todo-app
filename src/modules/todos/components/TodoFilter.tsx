@@ -18,7 +18,7 @@ const FilterButton: React.FC<FButtonProps> = ({ text, colorClass }) => {
   const dispatch = useDispatch();
   const handleClick = useCallback(() => {
     dispatch(setVisibilityFilter({ filter: text }));
-  }, [text]);
+  }, [text, dispatch]);
 
   return (
     <button

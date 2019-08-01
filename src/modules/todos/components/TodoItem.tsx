@@ -11,13 +11,21 @@ const TodoItem: React.FC<IProps> = ({ id, text, remarked, toggled }) => {
     dispatch(toggleTodo({ id }));
   }, [id, dispatch]);
 
-  const handleRemarkClick = useCallback(() => {
-    dispatch(remarkTodo({ id }));
-  }, [id, dispatch]);
+  const handleRemarkClick = useCallback(
+    (evt: React.MouseEvent<HTMLAnchorElement>) => {
+      evt.preventDefault();
+      dispatch(remarkTodo({ id }));
+    },
+    [id, dispatch]
+  );
 
-  const handleRemoveClick = useCallback(() => {
-    dispatch(removeTodo({ id }));
-  }, [id, dispatch]);
+  const handleRemoveClick = useCallback(
+    (evt: React.MouseEvent<HTMLAnchorElement>) => {
+      evt.preventDefault();
+      dispatch(removeTodo({ id }));
+    },
+    [id, dispatch]
+  );
 
   return (
     <>
@@ -38,6 +46,7 @@ const TodoItem: React.FC<IProps> = ({ id, text, remarked, toggled }) => {
       </div>
       <div className="column is-1">
         <a
+          href="/"
           role="button"
           className={className(
             remarked ? "has-text-warning" : "has-text-black"
@@ -49,6 +58,7 @@ const TodoItem: React.FC<IProps> = ({ id, text, remarked, toggled }) => {
       </div>
       <div className="column is-1">
         <a
+          href="/"
           role="button"
           className="has-text-danger"
           onClick={handleRemoveClick}
